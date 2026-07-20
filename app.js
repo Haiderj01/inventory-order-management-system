@@ -10,6 +10,7 @@ const db = require("./config/database");
 const app = express();
 const productRoutes = require("./routes/products");
 const orderRoutes = require("./routes/orders");
+const dashboardRoutes = require("./routes/dashboard");
 
 
 // Body Parser
@@ -54,6 +55,7 @@ app.get("/", (req, res) => {
 });
 app.use("/products", productRoutes);
 app.use("/orders", orderRoutes);
+app.use("/dashboard", dashboardRoutes);
 
 
 db.getConnection()

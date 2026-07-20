@@ -1,85 +1,105 @@
-<div class="card shadow">
+<div class="row justify-content-center">
 
-    <div class="card-header bg-success text-white">
-        <h3>Create Order</h3>
-    </div>
+    <div class="col-lg-8">
 
-    <div class="card-body">
+        <div class="card">
 
-        <% if(errors.length > 0){ %>
+            <div class="card-header bg-success text-white">
 
-            <div class="alert alert-danger">
+                <h4 class="mb-0">
 
-                <ul>
+                    Create New Order
 
-                    <% errors.forEach(error => { %>
-
-                        <li><%= error %></li>
-
-                    <% }) %>
-
-                </ul>
+                </h4>
 
             </div>
 
-        <% } %>
+            <div class="card-body">
 
-        <form action="/orders/add" method="POST">
+                <form action="/orders/add" method="POST">
 
-            <div class="mb-3">
+                    <div class="mb-4">
 
-                <label class="form-label">
-                    Product
-                </label>
+                        <label for="product_id" class="form-label">
 
-                <select
-                    class="form-select"
-                    name="product_id"
-                >
+                            Select Product
 
-                    <% products.forEach(product => { %>
+                        </label>
 
-                        <option value="<%= product.id %>">
+                        <select
+                            class="form-select"
+                            id="product_id"
+                            name="product_id"
+                            required
+                        >
 
-                            <%= product.name %>
-                            (Stock: <%= product.stock %>)
+                            <option value="">
 
-                        </option>
+                                -- Select a Product --
 
-                    <% }) %>
+                            </option>
 
-                </select>
+                            <% products.forEach(product => { %>
+
+                                <option value="<%= product.id %>">
+
+                                    <%= product.name %> | SKU: <%= product.sku %> | Stock: <%= product.stock %>
+
+                                </option>
+
+                            <% }) %>
+
+                        </select>
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label for="quantity" class="form-label">
+
+                            Quantity
+
+                        </label>
+
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="quantity"
+                            name="quantity"
+                            min="1"
+                            placeholder="Enter quantity"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+
+                        <a
+                            href="/orders"
+                            class="btn btn-secondary"
+                        >
+
+                            Back
+
+                        </a>
+
+                        <button
+                            type="submit"
+                            class="btn btn-success"
+                        >
+
+                            Create Order
+
+                        </button>
+
+                    </div>
+
+                </form>
 
             </div>
 
-            <div class="mb-3">
-
-                <label class="form-label">
-                    Quantity
-                </label>
-
-                <input
-                    type="number"
-                    name="quantity"
-                    class="form-control"
-                    min="1"
-                    required
-                >
-
-            </div>
-
-            <button class="btn btn-success">
-                Create Order
-            </button>
-
-            <a
-                href="/orders"
-                class="btn btn-secondary"
-            >
-                Cancel
-            </a>
-
-        </form>
+        </div>
 
     </div>
 

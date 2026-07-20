@@ -1,53 +1,155 @@
-<div class="d-flex justify-content-between align-items-center mb-3">
+<div class="container">
 
-    <h2>Orders</h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
 
-    <a href="/orders/add" class="btn btn-success">
-        + Create Order
-    </a>
+        <div>
 
-</div>
+            <h2 class="fw-bold mb-1">
 
-<% if (orders.length === 0) { %>
+                Orders
 
-    <div class="alert alert-info">
-        No orders found.
+            </h2>
+
+            <p class="text-muted mb-0">
+
+                Manage and track all customer orders
+
+            </p>
+
+        </div>
+
+        <a href="/orders/add" class="btn btn-success">
+
+            Create Order
+
+        </a>
+
     </div>
 
-<% } else { %>
+    <div class="card">
 
-<table class="table table-bordered table-hover">
+        <div class="card-header bg-dark text-white">
 
-    <thead class="table-dark">
+            <h5 class="mb-0">
 
-        <tr>
+                Order History
 
-            <th>ID</th>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Order Date</th>
+            </h5>
 
-        </tr>
+        </div>
 
-    </thead>
+        <div class="card-body">
 
-    <tbody>
+            <% if (orders.length === 0) { %>
 
-        <% orders.forEach(order => { %>
+                <div class="text-center py-5">
 
-            <tr>
+                    <h4 class="text-muted">
 
-                <td><%= order.id %></td>
-                <td><%= order.product_name %></td>
-                <td><%= order.quantity %></td>
-                <td><%= order.order_date %></td>
+                        No Orders Found
 
-            </tr>
+                    </h4>
 
-        <% }) %>
+                    <p class="text-secondary">
 
-    </tbody>
+                        Create your first order to get started.
 
-</table>
+                    </p>
 
-<% } %>
+                    <a href="/orders/add" class="btn btn-success mt-2">
+
+                        Create Order
+
+                    </a>
+
+                </div>
+
+            <% } else { %>
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover align-middle">
+
+                        <thead class="table-light">
+
+                            <tr>
+
+                                <th>Order ID</th>
+
+                                <th>Product</th>
+
+                                <th>Quantity</th>
+
+                                <th>Order Date</th>
+
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <% orders.forEach(order => { %>
+
+                                <tr>
+
+                                    <td>
+
+                                        <%= order.id %>
+
+                                    </td>
+
+                                    <td>
+
+                                        <%= order.product_name %>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge bg-primary">
+
+                                            <%= order.quantity %>
+
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <%= new Date(order.order_date).toLocaleDateString('en-IN', {
+                                            day: '2-digit',
+                                            month: 'short',
+                                            year: 'numeric'
+                                        }) %>
+
+                                    </td>
+
+                                    <td>
+
+                                        <span class="badge bg-success">
+
+                                            Completed
+
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+                            <% }) %>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            <% } %>
+
+        </div>
+
+    </div>
+
+</div>
