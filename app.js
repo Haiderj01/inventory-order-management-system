@@ -47,6 +47,9 @@ app.set("views", path.join(__dirname, "views"));
 app.use(expressLayouts);
 app.set("layout", "layouts/layout");
 
+app.get("/", (req, res) => {
+    res.redirect("/products");
+});
 app.use("/products", productRoutes);
 
 

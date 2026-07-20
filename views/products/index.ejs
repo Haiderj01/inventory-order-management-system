@@ -2,6 +2,12 @@
 
 <hr>
 
+<a href="/products/add">
+    Add Product
+</a>
+
+<br><br>
+
 <% if(products.length === 0){ %>
 
     <p>No products found.</p>
@@ -21,17 +27,11 @@
     <% products.forEach(product => { %>
 
         <tr>
-
             <td><%= product.id %></td>
-
             <td><%= product.name %></td>
-
             <td><%= product.sku %></td>
-
             <td><%= product.price %></td>
-
             <td><%= product.stock %></td>
-
         </tr>
 
     <% }) %>
