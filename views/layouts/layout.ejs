@@ -14,31 +14,43 @@
 
 <body>
 
-    <div class="container mt-4">
-        <% if(success.length> 0){ %>
-
-            <div class="alert alert-success">
-
-                <%= success %>
-
-            </div>
-
-            <% } %>
-
-                <% if(error.length> 0){ %>
-
-                    <div class="alert alert-danger">
-
-                        <%= error %>
-
-                    </div>
-
-                    <% } %>
-                        <%- body %>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/products">
+            Inventory Management System
+        </a>
     </div>
+</nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/script.js"></script>
+<div class="container mt-4">
+
+    <% if(success.length > 0){ %>
+
+        <div class="alert alert-success alert-dismissible fade show">
+
+            <%= success %>
+
+            <button class="btn-close" data-bs-dismiss="alert"></button>
+
+        </div>
+
+    <% } %>
+
+    <% if(error.length > 0){ %>
+
+        <div class="alert alert-danger alert-dismissible fade show">
+
+            <%= error %>
+
+            <button class="btn-close" data-bs-dismiss="alert"></button>
+
+        </div>
+
+    <% } %>
+
+    <%- body %>
+
+</div>
 
 </body>
 
