@@ -1,0 +1,53 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+
+    <h2>Orders</h2>
+
+    <a href="/orders/add" class="btn btn-success">
+        + Create Order
+    </a>
+
+</div>
+
+<% if (orders.length === 0) { %>
+
+    <div class="alert alert-info">
+        No orders found.
+    </div>
+
+<% } else { %>
+
+<table class="table table-bordered table-hover">
+
+    <thead class="table-dark">
+
+        <tr>
+
+            <th>ID</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Order Date</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        <% orders.forEach(order => { %>
+
+            <tr>
+
+                <td><%= order.id %></td>
+                <td><%= order.product_name %></td>
+                <td><%= order.quantity %></td>
+                <td><%= order.order_date %></td>
+
+            </tr>
+
+        <% }) %>
+
+    </tbody>
+
+</table>
+
+<% } %>

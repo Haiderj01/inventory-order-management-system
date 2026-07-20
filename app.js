@@ -9,6 +9,8 @@ const db = require("./config/database");
 
 const app = express();
 const productRoutes = require("./routes/products");
+const orderRoutes = require("./routes/orders");
+
 
 // Body Parser
 app.use(express.urlencoded({ extended: true }));
@@ -51,6 +53,7 @@ app.get("/", (req, res) => {
     res.redirect("/products");
 });
 app.use("/products", productRoutes);
+app.use("/orders", orderRoutes);
 
 
 db.getConnection()
