@@ -19,11 +19,11 @@ async function index(req, res) {
 
 // Show Add Product Form
 function showAddForm(req, res) {
-
     res.render("products/add", {
         title: "Add Product",
+        errors: [],
+        old: {},
     });
-
 }
 
 // Save Product

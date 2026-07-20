@@ -9,6 +9,16 @@ async function getAllProducts() {
     return rows;
 }
 
+// Find Product by SKU
+async function getProductBySKU(sku) {
+    const [rows] = await db.query(
+        "SELECT * FROM products WHERE sku = ?",
+        [sku]
+    );
+
+    return rows[0];
+}
+
 // Add Product
 async function createProduct(product) {
 
@@ -32,5 +42,6 @@ async function createProduct(product) {
 
 module.exports = {
     getAllProducts,
+    getProductBySKU,
     createProduct,
 };
